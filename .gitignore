@@ -1,0 +1,22 @@
+# === Java & Maven ===
+target/
+*.class
+*.log
+
+# === VS Code and IntelliJ project files ===
+.vscode/
+.idea/
+*.iml
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+
+# === Audio files (don't upload to GitHub) ===
+*.wav
+*.mp3
+*.ogg
+*.flac
+
+# === Optional: if you only want to ignore the "wav" folder ===
+/wav/
