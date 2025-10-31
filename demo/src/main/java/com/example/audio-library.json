@@ -2,26 +2,61 @@
   {
     "name": "Teach Me How to Dougie",
     "artist": "Cali Swag District",
-    "fileName": "dougie-crop.wav"
+    "fileName": "dougie-crop.wav",
+    "isFavorite": false
   },
   {
     "name": "Could've Been (Tik Tok Remix)",
     "artist": "H.E.R.",
-    "fileName": "her-crop.wav"
+    "fileName": "her-crop.wav",
+    "isFavorite": false
   },
   {
     "name": "On Me",
     "artist": "Lil Baby",
-    "fileName": "lil-baby-crop.wav"
+    "fileName": "lil-baby-crop.wav",
+    "isFavorite": false
   },
   {
     "name": "Mo Money Mo Problems",
-    "artist": "Notorios BIG",
-	  "fileName": "biggie-crop.wav"
+    "artist": "Notorious BIG",
+    "fileName": "biggie-crop.wav",
+    "isFavorite": false
   },
   {
     "name": "Industry Baby",
     "artist": "Lil Nas X",
-    "fileName": "lil-nas-x-crop.wav"
+    "fileName": "lil-nas-x-crop.wav",
+    "isFavorite": false
+  },
+  {
+    "name": "Ordinary",
+    "artist": "Alex Warren",
+    "fileName": "Alex_Warren_Ordinary.wav",
+    "isFavorite": false
+  },
+  {
+    "name": "Night Dancer",
+    "artist": "Imase",
+    "fileName": "night_dancer.wav",
+    "isFavorite": false
+  },
+  {
+    "name": "Let Her Go",
+    "artist": "Michael David Rosenberg",
+    "fileName": "Passenger - Let Her Go.wav",
+    "isFavorite": false
+  },
+  {
+    "name": "Mood (feat. iann dior)",
+    "artist": "24kGoldn",
+    "fileName": "24kgoldn - Mood.wav",
+    "isFavorite": false
+  },
+  {
+    "name": "Am I Wrong",
+    "artist": "Nico & Vinz",
+    "fileName": "am-i-wrong-by-nico-&-vinz.wav",
+    "isFavorite": false
   }
 ]
