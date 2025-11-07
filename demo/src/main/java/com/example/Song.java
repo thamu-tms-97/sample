@@ -1,63 +1,46 @@
 package com.example;
 
 public class Song {
-
   private String name;
   private String artist;
   private String fileName;
+  private int year;
+  private String genre;
   private boolean isFavorite;
+  private String filePath;
 
-  // Default constructor for Gson
-  public Song() {
+  public Song() {}
+
+  public Song(String name, String artist, String fileName, int year, String genre, boolean isFavorite, String filePath) {
+    this.name = name;
+    this.artist = artist;
+    this.fileName = fileName;
+    this.year = year;
+    this.genre = genre;
+    this.isFavorite = isFavorite;
+    this.filePath = filePath;
   }
 
-  // serializes attributes into a string
-  public String toString() {
-    String s;
+  public String name() { return name; }
+  public String artist() { return artist; }
+  public String fileName() { return fileName; }
+  public int year() { return year; }
+  public String genre() { return genre; }
+  public String filePath() { return filePath; }
+  public boolean isFavorite() { return isFavorite; }
 
-    // since the object is complex, we return a JSON formatted string
-    s = "{ ";
-    s += "name: " + name;
-    s += ", ";
-    s += "artist: " + artist;
-    s += ", ";
-    s += "isFavorite: " + isFavorite;
-    s += ", ";
-    s += "fileName: " + fileName;
-    s += " }";
-
-    return s;
-  }
-
-  // Display song information when playing
-  public void displayInfo() {
-    System.out.println("==================================");
-    System.out.println("Title: " + name);
-    System.out.println("Artist: " + artist);
-    System.out.println("Favorite: " + (isFavorite ? "[YES]" : "[NO]"));
-    System.out.println("==================================");
-  }
-
-  // getters
-  public String name() {
-    return this.name;
-  }
-
-  public String artist() {
-    return this.artist;
-  }
-
-  public String fileName() {
-    return this.fileName;
-  }
-
-  public boolean isFavorite() {
-    return this.isFavorite;
-  }
-
-  // Toggle favorite status
   public void toggleFavorite() {
-    this.isFavorite = !this.isFavorite;
-    System.out.println(isFavorite ? "Added to favorites!" : "Removed from favorites!");
+    isFavorite = !isFavorite;
+    System.out.println(isFavorite ? "Marked as favorite" : "Removed from favorites");
+  }
+
+  public void displayInfo() {
+    System.out.println("Title : " + name);
+    System.out.println("Artist: " + artist);
+    System.out.println("Year  : " + year);
+    System.out.println("Genre : " + genre);
+    System.out.println("File  : " + fileName);
+    System.out.println("Path  : " + filePath);
+    System.out.println("Fav   : " + (isFavorite ? "Yes" : "No"));
   }
 }

@@ -3,60 +3,90 @@
     "name": "Teach Me How to Dougie",
     "artist": "Cali Swag District",
     "fileName": "dougie-crop.wav",
-    "isFavorite": false
+    "year": 2010,
+    "genre": "Hip Hop",
+    "isFavorite": false,
+    "filePath": "/wav/dougie-crop.wav"
   },
   {
     "name": "Could've Been (Tik Tok Remix)",
     "artist": "H.E.R.",
     "fileName": "her-crop.wav",
-    "isFavorite": false
+    "year": 2020,
+    "genre": "R&B",
+    "isFavorite": false,
+    "filePath": "/wav/her-crop.wav"
   },
   {
     "name": "On Me",
     "artist": "Lil Baby",
     "fileName": "lil-baby-crop.wav",
-    "isFavorite": false
+    "year": 2020,
+    "genre": "Hip Hop",
+    "isFavorite": false,
+    "filePath": "/wav/lil-baby-crop.wav"
   },
   {
     "name": "Mo Money Mo Problems",
     "artist": "Notorious BIG",
     "fileName": "biggie-crop.wav",
-    "isFavorite": false
+    "year": 1997,
+    "genre": "Hip Hop",
+    "isFavorite": false,
+    "filePath": "/wav/biggie-crop.wav"
   },
   {
     "name": "Industry Baby",
     "artist": "Lil Nas X",
     "fileName": "lil-nas-x-crop.wav",
-    "isFavorite": false
+    "year": 2021,
+    "genre": "Pop",
+    "isFavorite": false,
+    "filePath": "/wav/lil-nas-x-crop.wav"
   },
   {
     "name": "Ordinary",
     "artist": "Alex Warren",
     "fileName": "Alex_Warren_Ordinary.wav",
-    "isFavorite": false
+    "year": 2023,
+    "genre": "Pop",
+    "isFavorite": false,
+    "filePath": "/wav/Alex_Warren_Ordinary.wav"
   },
   {
     "name": "Night Dancer",
     "artist": "Imase",
     "fileName": "night_dancer.wav",
-    "isFavorite": false
+    "year": 2022,
+    "genre": "J-Pop",
+    "isFavorite": false,
+    "filePath": "/wav/night_dancer.wav"
   },
   {
     "name": "Let Her Go",
     "artist": "Michael David Rosenberg",
     "fileName": "Passenger - Let Her Go.wav",
-    "isFavorite": false
+    "year": 2012,
+    "genre": "Folk Pop",
+    "isFavorite": false,
+    "filePath": "/wav/Passenger - Let Her Go.wav"
   },
   {
     "name": "Mood (feat. iann dior)",
     "artist": "24kGoldn",
     "fileName": "24kgoldn - Mood.wav",
-    "isFavorite": false
+    "year": 2020,
+    "genre": "Pop Rap",
+    "isFavorite": false,
+    "filePath": "/wav/24kgoldn - Mood.wav"
   },
   {
     "name": "Am I Wrong",
     "artist": "Nico & Vinz",
     "fileName": "am-i-wrong-by-nico-&-vinz.wav",
-    "isFavorite": false
+    "year": 2013,
+    "genre": "Pop",
+    "isFavorite": false,
+    "filePath": "/wav/am-i-wrong-by-nico-&-vinz.wav"
   }
 ]

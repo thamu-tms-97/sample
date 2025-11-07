@@ -9,8 +9,9 @@ import javax.sound.sampled.*;
 public class SpotifyLikeApp {
 
   private static Clip audioClip;
+  private static boolean isPaused = false;
+  private static long pausePosition = 0;
 
-  
   // DIRECTORY PATH CONFIGURED  
   private static String directoryPath =
     "C:\\Users\\thmrt\\Downloads\\sample\\demo\\src\\main\\java\\com\\example";
@@ -43,7 +44,6 @@ public class SpotifyLikeApp {
   }
 
   // displays the menu for the app
-   
   public static void menu() {
     System.out.println("\n==================================");
     System.out.println("---- SpotifyLikeApp ----");
@@ -83,7 +83,6 @@ public class SpotifyLikeApp {
   }
 
   //Shows the home screen with stats
-   
   public static void showHome(Song[] library) {
     System.out.println("\n-->Home<--");
     System.out.println("==================================");
@@ -123,6 +122,7 @@ public class SpotifyLikeApp {
       for (int i = 0; i < results.size(); i++) {
         Song song = results.get(i);
         System.out.println((i + 1) + ". " + song.name() + " - " + song.artist() + 
+                         " (" + song.year() + ") [" + song.genre() + "]" +
                          (song.isFavorite() ? " [FAVORITE]" : ""));
       }
 
@@ -147,6 +147,7 @@ public class SpotifyLikeApp {
     for (int i = 0; i < library.length; i++) {
       Song song = library[i];
       System.out.println((i + 1) + ". " + song.name() + " - " + song.artist() + 
+                       " (" + song.year() + ") [" + song.genre() + "]" +
                        (song.isFavorite() ? " [FAVORITE]" : ""));
     }
 
@@ -162,7 +163,6 @@ public class SpotifyLikeApp {
   }
 
   // Shows only favorite songs
-
   public static void showFavorites(Song[] library, Scanner input) {
     System.out.println("\n-->Favorites<--");
     
@@ -185,7 +185,8 @@ public class SpotifyLikeApp {
     System.out.println("Your favorite songs:");
     for (int i = 0; i < favorites.size(); i++) {
       Song song = favorites.get(i);
-      System.out.println((i + 1) + ". " + song.name() + " - " + song.artist());
+      System.out.println((i + 1) + ". " + song.name() + " - " + song.artist() +
+                         " (" + song.year() + ") [" + song.genre() + "]");
     }
 
     System.out.print("\nEnter song number to play (0 to cancel): ");
@@ -213,11 +214,15 @@ public class SpotifyLikeApp {
     }
 
     System.out.println("\nNow playing: " + song.name() + " by " + song.artist());
+    isPaused = false;
 
     boolean keepPlaying = true;
     while (keepPlaying) {
       System.out.println("\n--- Playback Controls ---");
+      System.out.println("[P]ause/Resume");
       System.out.println("[S]top");
+      System.out.println("[R]ewind 5 seconds");
+      System.out.println("[F]orward 5 seconds");
       System.out.println("Fa[V]orite/Unlike");
       System.out.println("[I]nfo - Show song details");
       System.out.println("[B]ack to menu");
@@ -226,10 +231,19 @@ public class SpotifyLikeApp {
       String control = input.nextLine().toLowerCase();
 
       switch (control) {
+        case "p":
+          togglePause();
+          break;
         case "s":
           stopSong();
           System.out.println("Song stopped.");
           keepPlaying = false;
+          break;
+        case "r":
+          rewind();
+          break;
+        case "f":
+          forward();
           break;
         case "v":
           song.toggleFavorite();
@@ -250,8 +264,7 @@ public class SpotifyLikeApp {
 
   // plays an audio file
   public static boolean play(Song song) {
-    final String filename = song.fileName();
-    final String filePath = directoryPath + "/wav/" + filename;
+    final String filePath = directoryPath + song.filePath();
     final File file = new File(filePath);
 
     if (!file.exists()) {
@@ -269,11 +282,33 @@ public class SpotifyLikeApp {
       audioClip.open(in);
       audioClip.setMicrosecondPosition(0);
       audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+      isPaused = false;
+      pausePosition = 0;
       return true;
     } catch (Exception e) {
       System.out.println("ERROR playing audio: " + e.getMessage());
       e.printStackTrace();
       return false;
+    }
+  }
+
+  // Toggle pause/resume
+  public static void togglePause() {
+    if (audioClip == null) {
+      System.out.println("No song is playing.");
+      return;
+    }
+
+    if (isPaused) {
+      audioClip.setMicrosecondPosition(pausePosition);
+      audioClip.start();
+      isPaused = false;
+      System.out.println("Resumed");
+    } else {
+      pausePosition = audioClip.getMicrosecondPosition();
+      audioClip.stop();
+      isPaused = true;
+      System.out.println("Paused");
     }
   }
 
@@ -283,7 +318,40 @@ public class SpotifyLikeApp {
       return;
     }
     audioClip.stop();
-    audioClip.close();
+    audioClip.setMicrosecondPosition(0);
+    isPaused = false;
+    pausePosition = 0;
+  }
+
+  // Rewind 5 seconds
+  public static void rewind() {
+    if (audioClip == null) {
+      System.out.println("No song is playing.");
+      return;
+    }
+    long currentPosition = audioClip.getMicrosecondPosition();
+    long newPosition = currentPosition - 5_000_000;
+    if (newPosition < 0) {
+      newPosition = 0;
+    }
+    audioClip.setMicrosecondPosition(newPosition);
+    if (isPaused) pausePosition = newPosition;
+    System.out.println("Rewound 5 seconds");
+  }
+
+  // Forward 5 seconds
+  public static void forward() {
+    if (audioClip == null) {
+      System.out.println("No song is playing.");
+      return;
+    }
+    long currentPosition = audioClip.getMicrosecondPosition();
+    long newPosition = currentPosition + 5_000_000;
+    long maxPosition = audioClip.getMicrosecondLength();
+    if (newPosition > maxPosition) newPosition = maxPosition - 1000;
+    audioClip.setMicrosecondPosition(newPosition);
+    if (isPaused) pausePosition = newPosition;
+    System.out.println("Forwarded 5 seconds");
   }
 
   //read the audio library of music
